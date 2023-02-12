@@ -1,11 +1,11 @@
 ﻿namespace SemsamECS.Core.Extension
 {
-    public sealed class RemoveEntityWithComponentSystem<TComponent> : ISystem, IExecuteSystem where TComponent : struct
+    public sealed class RemoveEntityWithComponentSystem<TComponent> : ISystem, IInitializeSystem, IExecuteSystem where TComponent : struct
     {
-        private readonly IEntities _entities;
-        private readonly IPool<TComponent> _pool;
+        private IEntities _entities;
+        private IPool<TComponent> _pool;
 
-        public RemoveEntityWithComponentSystem(IWorld world)
+        public void Initialize(IWorld world)
         {
             _entities = world.Entities;
             _pool = world.Pools.Get<TComponent>();
