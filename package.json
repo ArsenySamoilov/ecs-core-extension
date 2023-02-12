@@ -1,0 +1,24 @@
+{
+  "name": "com.arsenysamoilov.ecs-core-extension",
+  "version": "0.8.0",
+  "displayName": "Semsam ECS Core Extension",
+  "description": "Extra Features for Entity-Component-System Core",
+  "unity": "2021.3",
+  "unityRelease": "3f1",
+  "documentationUrl": "https://github.com/ArsenySamoilov/ecs-core-extension/blob/main/README.md",
+  "licensesUrl": "https://github.com/ArsenySamoilov/ecs-core-extension/blob/main/LICENSE.md",
+  "dependencies": {
+    "com.arsenysamoilov.ecs-core": "0.7.0"
+  },
+  "keywords": [
+    "Entity-Component-System Extension",
+    "ECS Extension",
+    "ECS-Core Extension",
+    "Semsam ECS Extension"
+  ],
+  "author": {
+    "name": "Arseny Samoilov",
+    "email": "samoilov.arseny@gmail.com",
+    "url": "https://github.com/ArsenySamoilov"
+  }
+}
