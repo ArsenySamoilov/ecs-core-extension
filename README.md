@@ -1,2 +1,2 @@
 # ecs-core-extension
- Extra Features for Entity Component System Core
+ Extra Features for Entity-Component-System Core
