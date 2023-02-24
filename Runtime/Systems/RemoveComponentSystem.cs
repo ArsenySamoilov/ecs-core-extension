@@ -1,5 +1,9 @@
 ﻿namespace SemsamECS.Core.Extension
 {
+    /// <summary>
+    /// A system that removes all the components.
+    /// </summary>
+    /// <typeparam name="TComponent">The type of the component.</typeparam>
     public sealed class RemoveComponentSystem<TComponent> : ISystem, IInitializeSystem, IExecuteSystem where TComponent : struct
     {
         private IPool<TComponent> _pool;

@@ -1,6 +1,10 @@
 ﻿namespace SemsamECS.Core.Extension
 {
-    public sealed class RemoveEntityWithComponentSystem<TComponent> : ISystem, IInitializeSystem, IExecuteSystem where TComponent : struct
+    /// <summary>
+    /// A system that removes all the entities with component.
+    /// </summary>
+    /// <typeparam name="TComponent">The type of the component.</typeparam>
+    public sealed class RemoveEntitySystem<TComponent> : ISystem, IInitializeSystem, IExecuteSystem where TComponent : struct
     {
         private IEntities _entities;
         private IPool<TComponent> _pool;
