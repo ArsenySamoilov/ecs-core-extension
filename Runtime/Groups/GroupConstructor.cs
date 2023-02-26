@@ -1,16 +1,17 @@
 ﻿namespace SemsamECS.Core.Extension
 {
     /// <summary>
-    /// A group builder.
+    /// A group constructor.
+    /// Represents a builder and a ruiner.
     /// </summary>
     public sealed class GroupConstructor : IGroupBuilder, IGroupRuiner
     {
-        private readonly Groups _groupContainer;
+        private readonly IGroups _groupContainer;
         private readonly GroupConfig? _groupConfig;
         private readonly PoolSet _poolSet;
         private readonly TypeSet _typeSet;
 
-        public GroupConstructor(Groups groupContainer, Pools poolContainer, in GroupConfig? groupConfig = null)
+        public GroupConstructor(IGroups groupContainer, Pools poolContainer, in GroupConfig? groupConfig = null)
         {
             _groupContainer = groupContainer;
             _groupConfig = groupConfig;
@@ -24,7 +25,7 @@
         /// <typeparam name="TComponent">The type of included component.</typeparam>
         IGroupBuilder IGroupBuilder.Include<TComponent>() where TComponent : struct
         {
-            _poolSet.Include<TComponent>();
+            _poolSet.IncludeSafe<TComponent>();
             _typeSet.Include<TComponent>();
             return this;
         }
@@ -45,7 +46,7 @@
         /// <typeparam name="TComponent">The type of excluded component.</typeparam>
         IGroupBuilder IGroupBuilder.Exclude<TComponent>() where TComponent : struct
         {
-            _poolSet.Exclude<TComponent>();
+            _poolSet.ExcludeSafe<TComponent>();
             _typeSet.Exclude<TComponent>();
             return this;
         }
@@ -64,14 +65,12 @@
         /// Returns a group with the matching set of components.
         /// </summary>
         IGroup IGroupBuilder.Complete()
-        {
-            return _groupContainer.Get(_typeSet, _poolSet, _groupConfig);
-        }
+            => _groupContainer.Get(_typeSet, _poolSet, _groupConfig);
 
         /// <summary>
         /// Removes the group with the matching set of components.
         /// </summary>
-        Groups IGroupRuiner.Complete()
+        IGroups IGroupRuiner.Complete()
         {
             _groupContainer.Remove(_typeSet);
             return _groupContainer;

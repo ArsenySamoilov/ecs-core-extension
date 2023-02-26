@@ -9,9 +9,17 @@
         /// Adds a system and returns itself.
         /// </summary>
         /// <typeparam name="TSystem">The type of the system.</typeparam>
-        public static ISystems Add<TSystem>(this ISystems systems) where TSystem : class, ISystem, new()
+        public static ISystems Add<TSystem>(this ISystems systemContainer) where TSystem : class, ISystem, new()
+            => systemContainer.Add(new TSystem());
+
+        /// <summary>
+        /// Removes the system at the index.
+        /// Checks the presence of the system.
+        /// </summary>
+        public static void Remove(this ISystems systemContainer, int index)
         {
-            return systems.Add(new TSystem());
+            if (index < systemContainer.GetSystems().Length)
+                systemContainer.Remove(index);
         }
     }
 }

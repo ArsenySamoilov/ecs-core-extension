@@ -20,6 +20,6 @@
         /// <summary>
         /// Removes the group with the matching set of components.
         /// </summary>
-        Groups Complete();
+        IGroups Complete();
     }
 }
