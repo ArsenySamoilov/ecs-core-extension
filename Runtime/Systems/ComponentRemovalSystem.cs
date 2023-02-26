@@ -10,7 +10,7 @@
 
         public void Initialize(IWorld world)
         {
-            _pool = world.Pools.Get<TComponent>();
+            _pool = world.Pools.GetSafe<TComponent>();
         }
 
         public void Execute()
