@@ -1,5 +1,8 @@
 ﻿namespace SemsamECS.Core.Extension
 {
+    /// <summary>
+    /// An extension of a pool set.
+    /// </summary>
     public static class PoolSetExtension
     {
         /// <summary>
@@ -21,7 +24,7 @@
         public static void ExcludeSafe<TComponent>(this PoolSet poolSet) where TComponent : struct
         {
             poolSet.PoolContainer.GetSafe<TComponent>();
-            poolSet.Include<TComponent>();
+            poolSet.Exclude<TComponent>();
         }
     }
 }
